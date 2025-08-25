@@ -1,0 +1,147 @@
+/*
+    PixelPass Custom Styles
+
+    This file is intended for any custom CSS that complements
+    or overrides Tailwind CSS classes. It's where we add
+    some extra sparkle beyond what Tailwind provides directly,
+    ensuring our page looks unique and polished!
+*/
+
+/* --- Global Body & Layout Enhancements --- */
+body {
+    /* Adding a subtle gradient background to make it less flat */
+    background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
+    /* Smooth transitions for any background changes or theme shifts */
+    transition: background-color 0.3s ease;
+}
+
+/* --- Card & Section Styling --- */
+/* Giving our main container and sections a bit more depth and definition */
+.max-w-4xl.w-full {
+    border: 1px solid rgba(255, 255, 255, 0.3); /* A subtle white border */
+    backdrop-filter: blur(5px); /* A cool frosted glass effect! */
+    -webkit-backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent background */
+}
+
+/* Styling for the encode/decode sections */
+.bg-blue-50, .bg-green-50 {
+    position: relative;
+    overflow: hidden; /* Ensures any internal elements don't spill out */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+/* A subtle hover effect for the sections to make them feel interactive */
+.bg-blue-50:hover, .bg-green-50:hover {
+    transform: translateY(-3px); /* Lifts the card slightly */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Enhanced shadow */
+}
+
+/* Adding a decorative ribbon/corner effect to highlight sections */
+.bg-blue-50::before, .bg-green-50::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-top: 30px solid;
+    border-right: 30px solid transparent;
+    opacity: 0.7;
+}
+
+.bg-blue-50::before {
+    border-color: #60a5fa; /* Blue for encode */
+}
+
+.bg-green-50::before {
+    border-color: #4ade80; /* Green for decode */
+}
+
+
+/* --- Form Elements & Buttons --- */
+
+/* Custom focus ring for form elements to ensure accessibility and consistent styling */
+input:focus,
+textarea:focus,
+select:focus {
+    outline: 2px solid transparent; /* Remove default browser outline */
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px var(--tw-ring-color, #3b82f6); /* Apply Tailwind's ring effect, default to blue-500 */
+}
+
+/* General button styling for a more custom look */
+button {
+    transition: all 0.2s ease-in-out; /* Smooth transitions for hover/focus */
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    /* Adding a subtle gradient to buttons */
+    background-image: linear-gradient(to right, var(--tw-gradient-stops));
+}
+
+button:hover {
+    transform: translateY(-1px); /* Slight lift on hover */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow on hover */
+}
+
+/* Button ripple effect (JavaScript would be needed for full effect, but this styles the base) */
+button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.3); /* Light ripple color */
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(1) translate(-50%, -50%);
+    transition: transform 0.5s, opacity 0.5s;
+    z-index: -1;
+}
+
+button:active::after {
+    transform: scale(20) translate(-50%, -50%); /* Expands on click */
+    opacity: 1;
+    transition: transform 0s, opacity 0s; /* Instant effect on active */
+}
+
+
+/* --- Image Previews --- */
+
+/* Ensure images within the preview do not overflow and have a nice border */
+img.max-w-full {
+    height: auto; /* Maintain aspect ratio */
+    object-fit: contain; /* Ensures the whole image is visible within its bounds */
+    border: 1px solid #e0e0e0; /* Light border around previews */
+    padding: 4px; /* Small padding inside the border */
+}
+
+/* --- Flash Messages --- */
+/* Adding a bit more distinct styling for flash messages */
+.flash-message {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.bg-green-100 {
+    background-color: #d1fae5; /* Lighter green for success */
+    color: #065f46; /* Darker green text */
+    border: 1px solid #a7f3d0;
+}
+
+.bg-red-100 {
+    background-color: #fee2e2; /* Lighter red for errors */
+    color: #991b1b; /* Darker red text */
+    border: 1px solid #fca5a5;
+}
+
+.bg-blue-100 {
+    background-color: #dbeafe; /* Lighter blue for info */
+    color: #1e40af; /* Darker blue text */
+    border: 1px solid #bfdbfe;
+}
